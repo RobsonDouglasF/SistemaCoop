@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooperativa</title>
+    <link rel="stylesheet" href="./dist/output.css">
+</head>
+<body class="bg-gray-100 flex justify-center items-center h-screen p-8 ">
+    <div class="bg-gray-300 w-full h-full rounded-md p-8 ">
+        <div class="bg-white  w-full ">
+            <div class="flex items-center">
+                <div class="w-45 text-center text-2xl">COOP</div>
+                <div id="divCabecalho" class="w-full flex justify-between items-center px-4 py-2 bg-gray-100 shadow-lg">
+                    <div class="flex gap-1 cursor-pointer" href="" > 
+                        <input id="inputBusca" type="text" class="h-6 rounded-md border  border-blue-500 px-3 w-80" placeholder="Buscar" ">
+                        <button id="btnBusca" class="flex border h-6 px-3 items-center rounded-md bg-green-400">Pesquisar</button>
+                    </div>
+                    <a class="" href=""><img class="w-8 mr-5" src="./img/perfil.png" alt="perfil"></a>
+                </div>                
+            </div>
+            <div class=" h-128 flex bg-gray-200 ">
+                <div class=" w-48 flex flex-col ">
+                    <button id="consultar" class="border flex-grow bg-white  duration-200 hover:text-lg">Consultar</button>
+                    <button id="btnAdicionarDesconto" class=" flex-grow bg-white duration-200 hover:text-lg">Adicionar</button>
+                    <button id="btnCadastrarCoop" class="border flex-grow bg-white break-words  duration-200 hover:text-lg">Cadastrar Coop</button>
+                    <button id="btnCadastrarEpi" class=" flex-grow bg-white  duration-200 hover:text-lg">Cadastrar EPI</button>
+                    <button id="btnOutros" class="border flex-grow bg-white  duration-200 hover:text-lg">Outros</button>
+                                 
+                </div>
+                
+                
+                
+                <div class="w-full bg-white m-4">
+                    
+                    <!--Consultar desconto -  Adicionar flex no lugar de hidden-->
+                    <div id="dados" class="">
+                        <div class="py-2 px-5 flex justify-between border-t-2 border-t-indigo-300 border-b mb-1">
+                            <p>Lista Completa</p>
+                            <button id="btnOpcao" class=""><p class="font-bold text-gray-600 hover:text-sm duration-200">OOO</p></button>
+                            <ul id="ulOpcao" class="bg-gray-300 w-32  p-2 z-10 absolute right-24 rounded-md hidden transition-all duration-300 ease-in-out">
+                                <li id="excluirOpcao" class="bg-red-600 border rounded-md px-5 py-1 cursor-pointer">Excluir</li>
+                                <li id="pagoOpcao" class="bg-green-600 border rounded-md px-5 py-1 cursor-pointer">Pago</li>
+                                <li id="pagarOpcao" class="bg-yellow-600 border rounded-md px-5 py-1 cursor-pointer">A pagar</li>
+                                <li id="fecharOpcao" class="border rounded-md text-center bg-blue-400 cursor-pointer">X</li>
+                            </ul>
+                        </div>
+                        <div id="listaConsulta" class="overflow-y-scroll" style="max-height: 320px;">
+                           
+                    </div>
+                        </div>
+
+                        <!--Cadastrar desconto -  Adicionar flex no lugar de hidden-->
+                        
+                        <div id="containerAdicionarDesconto" class="hidden">
+                            <div class=" py-2 px-5 flex justify-between border-t-2 border-indigo-300 items-center">
+                                <p>Lista de Equipamentos Retirados</p>
+                                <button id="adicionarDesconto" class="bg-green-600 border rounded-md px-5 py-1">Adicionar</button>
+                            </div>
+                            <div class="flex border justify-between px-5 py-1">
+
+                                <datalist id="listaEpiDados">
+
+                                </datalist>
+
+                                <input id="nomeCadastro" class="border flex-grow border-blue-400 px-2 rounded-md outline-none" placeholder="Nome" type="text" disabled>
+                                <input id="matriculaCadastro" class="border flex-grow border-blue-400 px-2 rounded-md w-28 outline-none" placeholder="Matricula" type="number">
+                                <input id="epiCadastro" class="border flex-grow border-blue-400 px-2 rounded-md w-28 outline-none" placeholder="EPI" type="text" list="listaEpiDados">
+                                <input id="quantidadeCadastro" class="border flex-grow border-blue-400 px-2 rounded-md w-10 outline-none" placeholder="Quant" type="number">
+                                <input id="valorCadastro" class="border flex-grow border-blue-400 px-2 rounded-md w-10 outline-none" placeholder="Valor" type="number" disabled>
+                                <input id="periodoCadastro" class="border flex-grow border-blue-400 px-2 rounded-md w-28 outline-none" placeholder="Periodo" type="date">
+                            </div>
+                            <div id="listaCadastro" class="overflow-y-scroll" style="max-height: 320px;">
+                            
+                            </div>
+                        </div>
+
+                        
+                        <!--Cadastrar Cooperado -  Adicionar flex no lugar de hidden-->
+                        <div id="containerAdicionarCoop" class="hidden">
+                            <div class="py-2 px-5 flex justify-between border-t-2 border-indigo-300 items-center">
+                                <p>Cadastrar Cooperado</p>
+                                <button id="btnCoop" class="bg-green-600 border rounded-md px-5 py-1">Adicionar</button>
+                            </div>
+                            <div class="flex border justify-between px-5 py-1">
+                                <input id="inputNome" class="outline-none border flex-grow border-blue-400 px-2 rounded-md" placeholder="Nome" type="text">
+                                <input id="inputMatricula" class="border flex-grow border-blue-400 px-2 rounded-md w-16 outline-none" placeholder="Matricula" type="number">
+                                <input id="inputFuncao" class="border flex-grow border-blue-400 px-2 rounded-md w-16 outline-none" placeholder="Função" type="text">
+                            </div>
+                            <div id="listaCoop" class="overflow-y-scroll" style="max-height: 320px;">
+                             
+                            </div>
+                        </div>
+
+
+                        <!--Cadastrar EPI -  Adicionar flex no lugar de hidden-->
+                        <div id="containerAdicionarEpi" class="hidden">
+                            <div class="py-2 px-5 flex justify-between border-t-2 border-indigo-300 items-center">
+                                <p>Cadastrar EPI</p>
+                                <button id="btnEpi" class="bg-green-600 border rounded-md px-5 py-1">Adicionar</button>
+                            </div>
+                            <div class="flex border justify-between px-5 py-1">
+                                <input id="inputEpi" class=" outline-none border flex-grow border-blue-400 px-2 rounded-md" placeholder="EPI" type="text">
+                                <input id="inputValor" class=" outline-none border flex-grow border-blue-400 px-2 rounded-md w-16" placeholder="Valor" type="number">
+                                <input id="inputTamanho" class="outline-none border flex-grow border-blue-400 px-2 rounded-md w-16" placeholder="Tamanho" type="text">
+                            </div>                            
+                            
+                            <div id="listaEpi" class="overflow-y-scroll" style="max-height: 320px;">
+                         
+                            </div>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="./src/script.js"></script>
+</body>
+</html>
